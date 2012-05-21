@@ -1,0 +1,21 @@
+#!/bin/bash
+
+curl http://<%= gerrit %>:<%= gerrit_port %>
+if [ $? != 0 ]; then
+    echo "Service gerrit is not started."
+    exit 1
+fi
+
+curl http://<%= jenkins %>:<%= jenkins_port %>
+if [ $? != 0 ]; then
+    echo "Service jenkins is not started."
+    exit 1
+fi
+
+curl http://<%= redmine %>:<%= redmine_port %>
+if [ $? != 0 ]; then
+    echo "Service redmine is not started."
+    exit 1
+fi
+
+echo "Test finished. It is OK."

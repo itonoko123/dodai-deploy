@@ -30,3 +30,4 @@ component_config_defaults:
 software_config_defaults:
  
 test_components:
+ - component: jenkins
