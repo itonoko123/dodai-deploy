@@ -6,7 +6,7 @@ class development::gerrit::uninstall {
 
     exec {
         "/var/lib/gerrit/bin/gerrit.sh stop -d /var/lib/gerrit":
-            alias => stop,
+            alias => "stop",
             require => Package[git-core];
 
         "rm -r /var/lib/gerrit/*":

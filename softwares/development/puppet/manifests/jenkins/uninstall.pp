@@ -7,11 +7,11 @@ class development::jenkins::uninstall {
 	
     exec {
         "rm -rf /var/lib/jenkins/*":
-        require => Package[jenkins];
+            require => Package[jenkins];
     }
 
     service {
         jenkins:
-            ensure => stopped
+            ensure => stopped;
     }
 }

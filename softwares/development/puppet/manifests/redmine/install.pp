@@ -17,7 +17,7 @@ class development::redmine::install {
 
     exec {
         "tar zxf /var/lib/redmine-2.0.0.tar.gz -C /var/lib":
-            alias => tar,
+            alias => "tar",
             require => File["/var/lib/redmine-2.0.0.tar.gz"];
 
         "/var/lib/redmine-2.0.0/install.sh":

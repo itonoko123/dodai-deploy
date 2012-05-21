@@ -14,34 +14,32 @@ class development::jenkins::install {
             require => File["/etc/default/jenkins"];
 
         "/var/lib/jenkins/plugins/git.hpi":
-            alias => git,
+            alias => "git",
             source => "puppet:///modules/development/git.hpi",
             mode => 644,
             require => File["/var/lib/jenkins/plugins"];
 
         "/var/lib/jenkins/plugins/redmine.hpi":
-            alias => redmine,
+            alias => "redmine",
             source => "puppet:///modules/development/redmine.hpi",
             mode => 644,
             require => File["/var/lib/jenkins/plugins"];
                         
         "/var/lib/jenkins/plugins/subversion.hpi":
-            alias => svn,
+            alias => "svn",
             source => "puppet:///modules/development/subversion.hpi",
             mode => 644,
             require => File["/var/lib/jenkins/plugins"];
                         
         "/var/lib/jenkins/plugins/gerrit-trigger.hpi":
-            alias => trigger,
+            alias => "trigger",
             source => "puppet:///modules/development/gerrit-trigger.hpi",
             mode => 644,
             require => File["/var/lib/jenkins/plugins"];
         }
 
-    service {
-        jenkins:
-            name => jenkins,
-            ensure => running,
-            require => [File[git], File[redmine], File[svn], File[trigger]];
+    exec {
+        "/etc/init.d/jenkins restart":
+            require => File["git", "redmine", "svn", "trigger"];
     }
 }

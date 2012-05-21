@@ -4,9 +4,9 @@ class development::redmine::uninstall {
             alias => "kill";
 
         "rm -r /var/lib/redmine-2.0.0/*":
-            require => Exec["kill"];
+            require => Exec[kill];
 
         "rm /var/lib/redmine-2.0.0.tar.gz":
-            require => Exec["kill"];
+            require => Exec[kill];
     }
 }

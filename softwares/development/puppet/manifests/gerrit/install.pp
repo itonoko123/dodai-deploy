@@ -17,7 +17,7 @@ class development::gerrit::install {
 
     exec {
         "java -jar /var/lib/gerrit-2.3.war init --batch -d /var/lib/gerrit":
-            alias => start,
+            alias => "start",
             require => File["/var/lib/gerrit-2.3.war"];
 
         "/var/lib/gerrit/bin/gerrit.sh restart -d /var/lib/gerrit":
